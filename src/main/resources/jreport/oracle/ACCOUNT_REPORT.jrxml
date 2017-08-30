@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2017-08-31T00:53:21 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REPORT1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6388520a-b77d-4ca8-8dc4-122d07ac696b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SCOTT_LOCAL_DB"/>
+	<parameter name="jreportpath" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM ACCOUNT]]>
+	</queryString>
+	<field name="ACCOUNT_ID" class="java.math.BigDecimal"/>
+	<field name="REF_ID" class="java.lang.String"/>
+	<field name="ACCESS_CODE" class="java.lang.String"/>
+	<field name="NAME1" class="java.lang.String"/>
+	<field name="NAME2" class="java.lang.String"/>
+	<field name="SHORT_NAME" class="java.lang.String"/>
+	<group name="ACCOUNT_ID">
+		<groupExpression><![CDATA[$F{ACCOUNT_ID}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="0" width="210" height="30" uuid="517438cd-cf28-431c-a3a7-5c63b3f69c42"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACCOUNT REPORT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="485" y="13" width="50" height="50" uuid="c9bdae48-9a9b-447d-bfb6-66c8c0becb6a"/>
+				<imageExpression><![CDATA[$P{jreportpath}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="0" width="100" height="30" uuid="ff75b731-6ac4-4993-8b6e-876db22737f3"/>
+				<text><![CDATA[ACCOUNT ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="1fa8fce4-cce2-4986-a236-4b275f5133c4"/>
+				<text><![CDATA[REFERENCE ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="0" width="324" height="60" uuid="108c3081-ae7c-473c-9244-0fba5148892d"/>
+				<textFieldExpression><![CDATA[$P{jreportpath}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="0" width="100" height="30" uuid="204df96a-fb8d-4021-9462-f1569b558c5c"/>
+				<textFieldExpression><![CDATA[$F{ACCOUNT_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="100" height="30" uuid="882abf6f-fa1e-4ea3-bdcd-860cac68994a"/>
+				<textFieldExpression><![CDATA[$F{REF_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
