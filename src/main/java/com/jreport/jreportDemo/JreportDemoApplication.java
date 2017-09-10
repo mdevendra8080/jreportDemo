@@ -24,10 +24,12 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jndi.JndiObjectFactoryBean;
 
-import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
 
 @SpringBootApplication
 public class JreportDemoApplication implements CommandLineRunner {
@@ -98,7 +100,17 @@ public class JreportDemoApplication implements CommandLineRunner {
 		File outFile = createResourceSubFolder("jasperoutput");
 		/// account.pdf
 		// Export to PDF.
-		JasperExportManager.exportReportToPdfFile(jasperPrint, new File(outFile, "account.pdf").getAbsolutePath());
+		//JasperExportManager.exportReportToPdfFile(jasperPrint, new File(outFile, "account.pdf").getAbsolutePath());
+		
+		// Export to Excel
+		
+		JRXlsxExporter exporterXLS = new JRXlsxExporter();
+		exporterXLS.setParameter(JRExporterParameter.JASPER_PRINT,jasperPrint);
+		exporterXLS.setParameter(JRExporterParameter.OUTPUT_FILE_NAME,new File(outFile, "JSONReport.xlsx").getAbsolutePath());//"D:/POC_JSONJASPER_REPORT/JSONReport12.xls");
+		 exporterXLS.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.TRUE);
+		            exporterXLS.setParameter(JRXlsExporterParameter.IS_WHITE_PAGE_BACKGROUND, Boolean.FALSE);
+		            exporterXLS.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
+		exporterXLS.exportReport();
 
 	}
 
